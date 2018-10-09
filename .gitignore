@@ -1,0 +1,12 @@
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+node_modules/
+bower_components/
+lib/
+jspm_packages/

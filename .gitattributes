@@ -1,0 +1,7 @@
+* text=auto
+
+# treat these files as binary so they don't mess up in `git diff`
+# comment these if don't use any compilation
+.map binary
+.min.js binary
+.css binary
