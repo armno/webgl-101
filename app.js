@@ -1,5 +1,22 @@
+class ShaderUtil {
+	loadShader(gl, type, source) {
+		const shader = gl.createShader(type);
+		gl.shaderSource(shader, source);
+		gl.compileShader(shader);
+
+		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+			console.error(`Cannot compile shader: ${gl.getShaderInfoLog(shader)}`);
+			gl.deleteShader(shader);
+			return null;
+		}
+
+		return shader;
+	}
+}
+
 class App {
 	constructor() {
+		this.shaderUtil = new ShaderUtil();
 		this.init();
 		this.createShaders();
 		this.createVertices();
@@ -75,11 +92,7 @@ class App {
 		}
 		`;
 
-		const vertexShader = this.gl.createShader(this.gl.VERTEX_SHADER);
-		this.gl.shaderSource(vertexShader, vs);
-		this.gl.compileShader(vertexShader);
-
-		return vertexShader;
+		return this.shaderUtil.loadShader(this.gl, this.gl.VERTEX_SHADER, vs);
 	}
 
 	/**
@@ -96,11 +109,8 @@ class App {
 			gl_FragColor = color;
 		}
 		`;
-		var fragmentShader = this.gl.createShader(this.gl.FRAGMENT_SHADER);
-		this.gl.shaderSource(fragmentShader, fs);
-		this.gl.compileShader(fragmentShader);
 
-		return fragmentShader;
+		return this.shaderUtil.loadShader(this.gl, this.gl.FRAGMENT_SHADER, fs);
 	}
 }
 
