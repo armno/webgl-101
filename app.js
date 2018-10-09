@@ -15,7 +15,7 @@ class App {
 
 	draw() {
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT);
-		this.gl.drawArrays(this.gl.POINTS, 0, 1);
+		this.gl.drawArrays(this.gl.POINTS, 0, 3);
 	}
 
 	createShaders() {
@@ -35,8 +35,20 @@ class App {
 	// pass in attributes from the main program (js) to shaders
 	// so we can set dynamic values to the shaders here
 	createVertices() {
+		const vertices = [0.1, -0.5, 0.0, -0.9, 0.9, 0.0, 0.5, 0.9, 0.0];
+		const buffer = this.gl.createBuffer();
+		this.gl.bindBuffer(this.gl.ARRAY_BUFFER, buffer);
+		this.gl.bufferData(
+			this.gl.ARRAY_BUFFER,
+			new Float32Array(vertices),
+			this.gl.STATIC_DRAW
+		);
+
 		const coords = this.gl.getAttribLocation(this.shaderProgram, 'coords');
-		this.gl.vertexAttrib3f(coords, 0, 0.5, 0);
+		// this.gl.vertexAttrib3f(coords, 0, 0.5, 0);
+		this.gl.vertexAttribPointer(coords, 3, this.gl.FLOAT, false, 0, 0);
+		this.gl.enableVertexAttribArray(coords);
+		this.gl.bindBuffer(this.gl.ARRAY_BUFFER, null);
 
 		const point = this.gl.getAttribLocation(this.shaderProgram, 'pointSize');
 		this.gl.vertexAttrib1f(point, 100);
