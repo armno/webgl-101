@@ -1,14 +1,17 @@
 {
-  "name": "webgl-101",
-  "description": "learning webgl",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "armno",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": "^5.6.1"
-  }
+	"name": "webgl-101",
+	"description": "learning webgl",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "lite-server ."
+	},
+	"author": "armno",
+	"license": "MIT",
+	"devDependencies": {
+		"eslint": "^5.6.1",
+		"lite-server": "^2.4.0",
+		"prettier": "1.14.3"
+	}
 }

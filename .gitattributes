@@ -5,3 +5,5 @@
 .map binary
 .min.js binary
 .css binary
+
+package-lock.json -diff
