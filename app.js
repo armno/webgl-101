@@ -15,7 +15,7 @@ class App {
 
 	draw() {
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT);
-		this.gl.drawArrays(this.gl.POINTS, 0, 3);
+		this.gl.drawArrays(this.gl.TRIANGLES, 0, 3);
 	}
 
 	createShaders() {
