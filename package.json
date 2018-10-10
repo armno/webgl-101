@@ -2,16 +2,21 @@
 	"name": "webgl-101",
 	"description": "learning webgl",
 	"version": "1.0.0",
-	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "lite-server ."
+		"start": "webpack-dev-server",
+		"build": "webpack"
 	},
 	"author": "armno",
 	"license": "MIT",
 	"devDependencies": {
+		"awesome-typescript-loader": "^5.2.1",
 		"eslint": "^5.6.1",
-		"lite-server": "^2.4.0",
-		"prettier": "1.14.3"
-	}
+		"prettier": "1.14.3",
+		"source-map-loader": "^0.2.4",
+		"typescript": "^3.1.2",
+		"webpack": "^4.20.2",
+		"webpack-cli": "^3.1.2",
+		"webpack-dev-server": "^3.1.9"
+	},
+	"dependencies": {}
 }
