@@ -7,6 +7,9 @@ module.exports = {
 		filename: 'main.js',
 		path: path.resolve(__dirname, 'dist')
 	},
+	devServer: {
+		contentBase: './dist'
+	},
 	// Currently we need to add '.ts' to the resolve.extensions array.
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js', '.jsx']
