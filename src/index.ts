@@ -1,20 +1,10 @@
-class ShaderUtil {
-	loadShader(gl, type, source) {
-		const shader = gl.createShader(type);
-		gl.shaderSource(shader, source);
-		gl.compileShader(shader);
-
-		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-			console.error(`Cannot compile shader: ${gl.getShaderInfoLog(shader)}`);
-			gl.deleteShader(shader);
-			return null;
-		}
-
-		return shader;
-	}
-}
+import { ShaderUtil } from './shader-util';
 
 class App {
+	private gl: WebGLRenderingContext;
+	private shaderUtil: ShaderUtil;
+	private shaderProgram: WebGLProgram;
+
 	constructor() {
 		this.shaderUtil = new ShaderUtil();
 		this.init();
@@ -24,7 +14,7 @@ class App {
 	}
 
 	init() {
-		const canvas = document.getElementById('canvas');
+		const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 		this.gl = canvas.getContext('webgl');
 		this.gl.viewport(0, 0, canvas.width, canvas.height);
 		this.gl.clearColor(0, 0, 0, 1);
