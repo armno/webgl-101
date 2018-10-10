@@ -1,4 +1,3 @@
-import { ShaderUtil } from './shader-util';
 import { Shader } from './shader';
 
 export class App {
@@ -9,7 +8,7 @@ export class App {
 	constructor() {
 		const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 		this.gl = canvas.getContext('webgl');
-		this.shader = new Shader(this.gl);
+		this.shader = new Shader();
 
 		this.gl.viewport(0, 0, canvas.width, canvas.height);
 		this.gl.clearColor(0, 0, 0, 1);
@@ -27,16 +26,9 @@ export class App {
 	}
 
 	createShaders() {
-		const vertexShader = this.shader.createVertexShader();
-		const fragmentShader = this.shader.createFragmentShader();
-
 		// to put webgl shaders into the page, we need to create a 'program',
 		// and attach vertex & fragment shaders into the program
-		this.shaderProgram = this.gl.createProgram();
-		this.gl.attachShader(this.shaderProgram, vertexShader);
-		this.gl.attachShader(this.shaderProgram, fragmentShader);
-
-		this.gl.linkProgram(this.shaderProgram);
+		this.shaderProgram = this.shader.initShaderProgram(this.gl);
 		this.gl.useProgram(this.shaderProgram);
 	}
 
