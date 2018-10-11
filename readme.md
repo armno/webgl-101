@@ -48,11 +48,9 @@ there are **over 200 properties (constants) and methods** in this object type.
 There is 0% chance that I could remember them all,
 and there are more than 87.525% chance that I will make a typo in the code when typing those property and method names manually by hand.
 
-I was frustrated eventually by keep looking up for the names on the internet, as well as making enough of stupid typos.
-
 ## How to get help from VSCode? 🤔
 
-The real problem is not on `gl` object itself, but instead, is on how we get the `canvas` element.
+The real problem is that VSCode cannot guess the type of returned `canvas` element.
 
 By using `document.getElementById()`, we got `HTMLElement` type returned.
 
@@ -83,27 +81,32 @@ Passing in `webgl` as a parameter, VSCode knows the return type of the method th
 ![](dom-defs.png)
 (built-in `lib.dom.d.ts` type definitions file in VSCode)
 
-Now we can get code intellisense with our `gl` object working.
+Now we can get code autocompletion our `gl` object working.
 
 ![](intel-works.png)
 
 ### Option 2: Use TypeScript's Type Assertion
 
-With TypeScript, we can use [Type Assertion](https://www.typescriptlang.org/docs/handbook/basic-types.html) to tell VSCode about the canvas object type.
+If the project is using TypeScript, we can use [Type Assertion](https://www.typescriptlang.org/docs/handbook/basic-types.html) to tell VSCode about the canvas object type.
 
 ```ts
 const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 ```
 
-This tells the TypeScript compiler to treat `canvas` object as `HTMLCanvasElement` type, instead of the default `HTMLElement` type. It is not the same with type casting.
+This tells the TypeScript compiler to treat `canvas` object as `HTMLCanvasElement` type, instead of the default `HTMLElement` type. (It is not the same with type casting though.)
 
-When VSCode sees the variable for a type, it shows the code intellisense like so.
+When VSCode knows the type, it shows the code IntelliSense like so.
 
 ![](type-assertion.png)
 
-WIP-----
+---
 
-## Set up TypeScript
+## Setting up TypeScript in My Learning Project
+
+I started the learning project with vanilla JavaScript because I wanted to avoid setting up build tools if I don't need them.
+With TypeScript, this is unavoidable. At least we have to set up some build steps to transpile TypeScript to JavaScript.
+
+Here is how I set up webpack (with my very limited knowledge about webpack) to use TypeScript.
 
 1. Install TypeScript
 
@@ -117,13 +120,13 @@ $ npm install --save-dev typescript
 $ npm install --save-dev webpack webpack-dev-server
 ```
 
-3. Install TypeScript loader
+3. Install TypeScript loader with sourcemaps support
 
 ```sh
 $ npm install --save-dev awesome-typescript-loader source-map-loader
 ```
 
-_or you can install everything above in 1 command._
+_or you can install everything above in a single command._
 
 4. Create `webpack.config.js` configuration file for webpack.
 
@@ -155,24 +158,8 @@ module.exports = {
 };
 ```
 
-5. Start `webpack-dev-server`
+5. Start the dev server
 
 ```sh
 $ npx webpack-dev-server
-```
-
----
-
-## Development
-
-start dev server
-
-```sh
-$ npm start
-```
-
-build
-
-```sh
-$ npm run build
 ```
