@@ -1,8 +1,8 @@
-# Using VSCode for WebGL Development
+# VSCode and WebGL Development
 
 I start learning about WebGL recently from WebGL Tutorials on the internet.
-I create 2 files in the project: `index.html` and `main.js` to start off.
-The editor I use is VSCode.
+The editor I use is [VSCode](https://code.visualstudio.com/) which an is awesome editor for frontend development,
+but still I found some issues and I think I should take a note.
 
 Most tutorials I have seen start like this
 
@@ -36,11 +36,11 @@ gl.COMPILE_STATUS;
 
 The problem I had was that VSCode was unable to display code [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)
 for `gl` object because VSCode finds it has the type of `any` -
-VSCode does not know what type of the object is, thus it cannot help.
+VSCode does not know what type of the object is, thus it cannot help with its awesome IntelliSense, which is unfortunate.
 
 ![with type any, vscode does not know much about it](gl-any.png)
 
-First I thought it would be fine, I can get along with this.
+First I thought it would be fine. Maybe I can get along with this.
 
 In fact, the `gl` object has type of `WebGLRenderingContext`. And if we check [the specs of this interface](https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.14),
 there are **over 200 properties (constants) and methods** in this object type.
@@ -50,7 +50,7 @@ and there are more than 87.525% chance that I will make a typo in the code when 
 
 ## How to get help from VSCode? 🤔
 
-The real problem is that VSCode cannot guess the type of returned `canvas` element.
+The actual problem is that VSCode cannot guess the type of returned `canvas` element.
 
 By using `document.getElementById()`, we got `HTMLElement` type returned.
 
@@ -59,6 +59,8 @@ By using `document.getElementById()`, we got `HTMLElement` type returned.
 By using `document.querySelector()`, we got `Element` type returned.
 
 ![](query-selector-return.png)
+
+I could think of 2 workarounds.
 
 ### Option 1: use `document.createElement()`
 
@@ -158,8 +160,10 @@ module.exports = {
 };
 ```
 
-5. Start the dev server
+5. Start the webpack dev server
 
 ```sh
 $ npx webpack-dev-server
 ```
+
+And now I can use TypeScript in my learning project.
