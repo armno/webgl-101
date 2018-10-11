@@ -1,5 +1,7 @@
 # VSCode and WebGL Development
 
+[Read this on Medium](https://medium.com/@armno/vscode-and-webgl-development-dfc17bba52ed)
+
 I start learning about WebGL recently from WebGL Tutorials on the internet.
 The editor I use is [VSCode](https://code.visualstudio.com/) which an is awesome editor for frontend development,
 but still I found some issues and I think I should take a note.
