@@ -1,6 +1,9 @@
 # VSCode and WebGL Development
 
-[Read this on Medium](https://medium.com/@armno/vscode-and-webgl-development-dfc17bba52ed)
+[Read this on Medium](https://medium.com/@armno/vscode-and-webgl-development-dfc17bba52ed).
+The code in this repo is based on the course [Create 3D Graphics in JavaScript using WebGL](https://egghead.io/courses/create-3d-graphics-in-javascript-using-webgl) on Egghead.io.
+
+---
 
 I start learning about WebGL recently from WebGL Tutorials on the internet.
 The editor I use is [VSCode](https://code.visualstudio.com/) which an is awesome editor for frontend development,
